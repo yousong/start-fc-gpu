@@ -47,7 +47,7 @@ def invoke():
                 'samples': samples,
             }, 200, [("Content-Type", "application/json")]
 
-        args = f"samples/{sample}"
+        args = [f"samples/{sample}"] + request.args.getlist('args')
         p = subprocess.run(args,
                            stdout=subprocess.PIPE,
                            stderr=subprocess.PIPE)
